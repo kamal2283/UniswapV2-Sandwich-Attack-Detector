@@ -94,26 +94,29 @@
 
 /* Custom Toast Styles */
 .custom-toast-container .sandwich-attack-toast {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5);
+  border: 2px solid #dc3545;
 }
 
 .custom-toast-container .sandwich-attack-toast-body {
   color: white;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .Toastify__toast--error {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  border: 2px solid #dc3545;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
 }
 
 .Toastify__toast--success {
-  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 }
 
 .Toastify__toast--warning {
-  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
 }
 
 /* Responsive Design */

@@ -15,46 +15,50 @@ app.use(express.json());
 // In-memory storage for detected attacks (in production, use a database)
 let detectedAttacks = [
   {
-    txHash: "0x1234567890abcdef1234567890abcdef12345678",
+    txHash:
+      "0xa1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456ab",
     blockNumber: 18500000,
-    attacker: "0xattacker1234567890abcdef1234567890abcdef",
-    victim: "0xvictim1234567890abcdef1234567890abcdef12",
+    attacker: "0x742d35cc6448514c8b3d3b9f36e7e0c3f9ee7890",
+    victim: "0x8ba1f109551bd432803012645fac136c2c2b5dad",
     profit: "2.45",
     timestamp: Date.now() - 3600000, // 1 hour ago
     confirmed: true,
   },
   {
-    txHash: "0xabcdef1234567890abcdef1234567890abcdef12",
+    txHash:
+      "0xb2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234567cd",
     blockNumber: 18500001,
-    attacker: "0xattacker2234567890abcdef1234567890abcdef",
-    victim: "0xvictim2234567890abcdef1234567890abcdef12",
+    attacker: "0x853e36c7f3f3bccddd3c4e1d8e2f9a6b5c4d8901",
+    victim: "0x9cb1f20a661ce432803012645fac136c2c2b5dae",
     profit: "1.23",
     timestamp: Date.now() - 1800000, // 30 minutes ago
     confirmed: true,
   },
   {
-    txHash: "0x567890abcdef1234567890abcdef1234567890ab",
+    txHash:
+      "0xc3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678ef",
     blockNumber: 18500002,
-    attacker: "0xattacker3234567890abcdef1234567890abcdef",
-    victim: "0xvictim3234567890abcdef1234567890abcdef12",
+    attacker: "0x964f47d8e4e4cddedd4d5e2e9f3a7c6d5e4f9012",
+    victim: "0xadc2f31b772df532803012645fac136c2c2b5daf",
     profit: "0.87",
     timestamp: Date.now() - 900000, // 15 minutes ago
     confirmed: false,
   },
   {
-    txHash: "0x234567890abcdef1234567890abcdef1234567890",
+    txHash:
+      "0xd4e5f6789012345678901234567890abcdef1234567890abcdef12345678901a",
     blockNumber: 18500003,
-    attacker: "0xattacker4234567890abcdef1234567890abcdef",
-    victim: "0xvictim4234567890abcdef1234567890abcdef12",
+    attacker: "0xa75058e9f5f5deeeed5e6f3faf4b8d7e6f5fa123",
+    victim: "0xbed3f42c883ef632803012645fac136c2c2b5db0",
     profit: "3.15",
     timestamp: Date.now() - 600000, // 10 minutes ago
     confirmed: true,
   },
   {
-    txHash: "0x7890abcdef1234567890abcdef1234567890abcdef",
+    txHash: "0xe5f6789012345678901234567890abcdef1234567890abcdef123456789abc",
     blockNumber: 18500004,
-    attacker: "0xattacker5234567890abcdef1234567890abcdef",
-    victim: "0xvictim5234567890abcdef1234567890abcdef12",
+    attacker: "0xb8616afaf6f6efffffee7f4fbf5c9e8f7f6fb234",
+    victim: "0xcfe4f53d994ff732803012645fac136c2c2b5db1",
     profit: "0.56",
     timestamp: Date.now() - 300000, // 5 minutes ago
     confirmed: false,

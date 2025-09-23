@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 
-const Dashboard = ({ attacks, loading }) => {
+const Dashboard = ({ attacks, loading, onAttackClick }) => {
   if (loading) {
     return (
       <div className="dashboard">
@@ -51,13 +51,22 @@ const Dashboard = ({ attacks, loading }) => {
             </thead>
             <tbody>
               {attacks.map((attack, idx) => (
-                <tr key={idx} className="attack-row">
+                <tr
+                  key={idx}
+                  className="attack-row clickable-row"
+                  onClick={() => onAttackClick && onAttackClick(attack)}
+                  title="Click to view detailed analysis"
+                >
                   <td>
                     <a
                       href={`https://etherscan.io/tx/${attack.txHash}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="tx-link"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log("Opening transaction:", attack.txHash);
+                      }}
                     >
                       {attack.txHash
                         ? `${attack.txHash.slice(0, 10)}...`
@@ -71,6 +80,13 @@ const Dashboard = ({ attacks, loading }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="address-link"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log(
+                          "Opening attacker address:",
+                          attack.attacker
+                        );
+                      }}
                     >
                       {attack.attacker
                         ? `${attack.attacker.slice(0, 8)}...`
@@ -83,6 +99,10 @@ const Dashboard = ({ attacks, loading }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="address-link"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log("Opening victim address:", attack.victim);
+                      }}
                     >
                       {attack.victim
                         ? `${attack.victim.slice(0, 8)}...`

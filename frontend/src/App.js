@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Dashboard from "./components/Dashboard";
 import NotificationSystem from "./components/NotificationSystem";
+import AttackDetails from "./components/AttackDetails";
+import DeepAnalysis from "./components/DeepAnalysis";
 import ApiService from "./services/ApiService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +12,8 @@ function App() {
   const [attacks, setAttacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [apiStatus, setApiStatus] = useState("checking");
+  const [selectedAttack, setSelectedAttack] = useState(null);
+  const [deepAnalysisAttack, setDeepAnalysisAttack] = useState(null);
 
   useEffect(() => {
     // Check API health on startup
@@ -61,6 +65,24 @@ function App() {
     // You can add additional handling here, like sound alerts
   };
 
+  const handleAttackClick = (attack) => {
+    setSelectedAttack(attack);
+    toast.dismiss(); // Dismiss the notification when clicked
+  };
+
+  const closeAttackDetails = () => {
+    setSelectedAttack(null);
+  };
+
+  const openDeepAnalysis = (attack) => {
+    setDeepAnalysisAttack(attack);
+    setSelectedAttack(null); // Close attack details
+  };
+
+  const closeDeepAnalysis = () => {
+    setDeepAnalysisAttack(null);
+  };
+
   return (
     <div className="App">
       <header className="app-header">
@@ -72,13 +94,35 @@ function App() {
       </header>
 
       <main className="app-main">
-        <Dashboard attacks={attacks} loading={loading} />
-        <NotificationSystem attacks={attacks} onNewAttack={handleNewAttack} />
+        <Dashboard
+          attacks={attacks}
+          loading={loading}
+          onAttackClick={handleAttackClick}
+        />
+        <NotificationSystem
+          attacks={attacks}
+          onNewAttack={handleNewAttack}
+          onAttackClick={handleAttackClick}
+        />
       </main>
 
       <footer className="app-footer">
         <p>© 2025 UniswapV2 Sandwich Attack Detector - Protecting DeFi Users</p>
       </footer>
+
+      {/* Attack Details Modal */}
+      {selectedAttack && (
+        <AttackDetails
+          attack={selectedAttack}
+          onClose={closeAttackDetails}
+          onDeepAnalysis={openDeepAnalysis}
+        />
+      )}
+
+      {/* Deep Analysis Modal */}
+      {deepAnalysisAttack && (
+        <DeepAnalysis attack={deepAnalysisAttack} onClose={closeDeepAnalysis} />
+      )}
 
       <ToastContainer
         position="top-right"
