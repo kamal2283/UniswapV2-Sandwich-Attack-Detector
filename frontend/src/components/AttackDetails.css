@@ -146,8 +146,8 @@
 }
 
 .detail-link {
-  color: #667eea;
-  text-decoration: none;
+  color: #667eea !important;
+  text-decoration: none !important;
   font-family: 'Courier New', monospace;
   word-break: break-all;
   transition: all 0.2s ease;
@@ -158,15 +158,31 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer !important;
 }
 
 .detail-link:hover {
-  color: #764ba2;
-  text-decoration: none;
+  color: #764ba2 !important;
+  text-decoration: none !important;
   background: rgba(102, 126, 234, 0.2);
   border-color: rgba(102, 126, 234, 0.4);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.tx-hash-link {
+  color: #007bff !important;
+  background: rgba(0, 123, 255, 0.1) !important;
+  border-color: rgba(0, 123, 255, 0.2) !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+.tx-hash-link:hover {
+  color: #0056b3 !important;
+  background: rgba(0, 123, 255, 0.2) !important;
+  border-color: rgba(0, 123, 255, 0.4) !important;
+  text-decoration: underline !important;
 }
 
 .detail-link::after {

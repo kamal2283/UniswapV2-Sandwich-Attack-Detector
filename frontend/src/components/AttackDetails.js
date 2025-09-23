@@ -94,14 +94,19 @@ const AttackDetails = ({ attack, onClose, onDeepAnalysis }) => {
               <div className="detail-item">
                 <label>Transaction Hash:</label>
                 <div className="address-container">
-                  {isValidEthereumHash(attack.txHash) ? (
+                  {attack.txHash && attack.txHash !== "N/A" ? (
                     <>
                       <a
                         href={`https://etherscan.io/tx/${attack.txHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="detail-link"
+                        className="detail-link tx-hash-link"
                         title={`View transaction ${attack.txHash} on Etherscan`}
+                        style={{
+                          color: "#007bff",
+                          textDecoration: "underline",
+                          cursor: "pointer",
+                        }}
                       >
                         {formatHash(attack.txHash)}
                       </a>
@@ -133,6 +138,13 @@ const AttackDetails = ({ attack, onClose, onDeepAnalysis }) => {
                   rel="noopener noreferrer"
                   className="detail-link"
                   title={`View block ${attack.blockNumber} on Etherscan`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(
+                      `https://etherscan.io/block/${attack.blockNumber}`,
+                      "_blank"
+                    );
+                  }}
                 >
                   {attack.blockNumber || "N/A"}
                 </a>
@@ -168,6 +180,13 @@ const AttackDetails = ({ attack, onClose, onDeepAnalysis }) => {
                         rel="noopener noreferrer"
                         className="detail-link attacker"
                         title={`View attacker address ${attack.attacker} on Etherscan`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(
+                            `https://etherscan.io/address/${attack.attacker}`,
+                            "_blank"
+                          );
+                        }}
                       >
                         {formatAddress(attack.attacker)}
                       </a>
@@ -202,6 +221,13 @@ const AttackDetails = ({ attack, onClose, onDeepAnalysis }) => {
                         rel="noopener noreferrer"
                         className="detail-link victim"
                         title={`View victim address ${attack.victim} on Etherscan`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(
+                            `https://etherscan.io/address/${attack.victim}`,
+                            "_blank"
+                          );
+                        }}
                       >
                         {formatAddress(attack.victim)}
                       </a>

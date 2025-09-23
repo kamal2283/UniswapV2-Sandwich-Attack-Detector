@@ -63,9 +63,15 @@ const Dashboard = ({ attacks, loading, onAttackClick }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="tx-link"
+                      style={{
+                        color: "#007bff",
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                      }}
                       onClick={(e) => {
                         e.stopPropagation();
                         console.log("Opening transaction:", attack.txHash);
+                        // Direct navigation without window.open for testing
                       }}
                     >
                       {attack.txHash
@@ -86,6 +92,11 @@ const Dashboard = ({ attacks, loading, onAttackClick }) => {
                           "Opening attacker address:",
                           attack.attacker
                         );
+                        // Force open in new window/tab
+                        window.open(
+                          `https://etherscan.io/address/${attack.attacker}`,
+                          "_blank"
+                        );
                       }}
                     >
                       {attack.attacker
@@ -102,6 +113,11 @@ const Dashboard = ({ attacks, loading, onAttackClick }) => {
                       onClick={(e) => {
                         e.stopPropagation();
                         console.log("Opening victim address:", attack.victim);
+                        // Force open in new window/tab
+                        window.open(
+                          `https://etherscan.io/address/${attack.victim}`,
+                          "_blank"
+                        );
                       }}
                     >
                       {attack.victim
